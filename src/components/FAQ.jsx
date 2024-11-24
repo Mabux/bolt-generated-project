@@ -1,5 +1,5 @@
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useState } from 'react'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 
 const Section = styled.section`
@@ -27,7 +27,7 @@ const Question = styled.button`
   width: 100%;
   text-align: left;
   padding: 1rem;
-  background: ${props => props.isOpen ? '#f8f9fa' : 'white'};
+  background: ${props => props.$expanded ? '#f8f9fa' : 'white'};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,11 +36,11 @@ const Question = styled.button`
 `
 
 const Answer = styled.div`
-  padding: ${props => props.isOpen ? '1rem' : '0 1rem'};
-  height: ${props => props.isOpen ? 'auto' : '0'};
+  padding: ${props => props.$expanded ? '1rem' : '0 1rem'};
+  height: ${props => props.$expanded ? 'auto' : '0'};
   overflow: hidden;
   transition: all 0.3s ease;
-  opacity: ${props => props.isOpen ? '1' : '0'};
+  opacity: ${props => props.$expanded ? '1' : '0'};
 `
 
 const FAQs = [
@@ -73,12 +73,12 @@ export const FAQ = () => {
           <FAQItem key={index}>
             <Question 
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              isOpen={openIndex === index}
+              $expanded={openIndex === index}
             >
               {faq.question}
               {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
             </Question>
-            <Answer isOpen={openIndex === index}>
+            <Answer $expanded={openIndex === index}>
               {faq.answer}
             </Answer>
           </FAQItem>

@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import { FaRegCalendarCheck, FaRegLightbulb, FaRegSmile } from 'react-icons/fa'
 
